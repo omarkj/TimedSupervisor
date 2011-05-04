@@ -480,7 +480,7 @@ validate_sup_opts([{restart, {MaxR, MaxT, Delay}} | Tail], State) ->
     end,
     validate_sup_opts(Tail, State#state{intensity=MaxR, period=MaxT, delay=Delay});
 validate_sup_opts([{onfailure, Fun} | Tail], State)
-    when is_function(Fun,4); Fun =:= reschedule; Fun =:= exit; Fun =:= default
+    when is_function(Fun,4); Fun =:= reschedule; Fun =:= shutdown; Fun =:= exit; Fun =:= default
        ; is_tuple(Fun), element(1, Fun) =:= exit
       -> validate_sup_opts(Tail, State#state{onfailure=Fun});
 validate_sup_opts([use_monitor | Tail], State) ->
