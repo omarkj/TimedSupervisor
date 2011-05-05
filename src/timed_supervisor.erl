@@ -498,9 +498,6 @@ validate_sup_opts([Other | _Tail], _) ->
 validate_sup_opts([], State) ->
     State.
 
--define(MAX_INT, 3600).
-
-wakeup_interval(Secs, _MSecs) when Secs > ?MAX_INT -> ?MAX_INT*1000;
 wakeup_interval(Secs,  MSecs) -> Secs*1000 - MSecs.
 
 %% @spec (State::#state{}, Type) -> {ok, Status, State} | {error, Reason}
